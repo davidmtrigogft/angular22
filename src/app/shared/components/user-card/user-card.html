@@ -1,0 +1,33 @@
+    <article class="user-card">
+      @if (user(); as userData) {
+        <div class="user-card__header">
+          @if (userData.avatar) {
+            <img [src]="userData.avatar" [alt]="userData.name" class="user-card__avatar" />
+          } @else {
+            <div class="user-card__avatar user-card__avatar--placeholder">
+              {{ userData.name.charAt(0).toUpperCase() }}
+            </div>
+          }
+        </div>
+
+        <div class="user-card__content">
+          <h2 class="user-card__name">{{ userData.name }}</h2>
+          <p class="user-card__email">{{ userData.email }}</p>
+        </div>
+
+        <div class="user-card__actions">
+          <button
+            (click)="viewClick.emit(userData.id)"
+            class="user-card__button user-card__button--primary"
+          >
+            Ver Perfil
+          </button>
+          <button
+            (click)="deleteClick.emit(userData.id)"
+            class="user-card__button user-card__button--danger"
+          >
+            Eliminar
+          </button>
+        </div>
+      }
+    </article>
