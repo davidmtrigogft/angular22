@@ -4,20 +4,20 @@
     <p>Añade un nuevo usuario al sistema</p>
   </div>
 
-  <form class="user-form">
+  <form class="user-form" (ngSubmit)="onSubmit()">
     <div class="form-field">
-      <label for="name">Nombre</label>
-      <input type="text" id="name" name="name" placeholder="Introduce el nombre" />
+      <label>Nombre</label>
+      <input type="text" placeholder="Introduce el nombre" [formField]="userForm.name" />
     </div>
 
     <div class="form-field">
-      <label for="email">Correo electrónico</label>
-      <input type="email" id="email" name="email" placeholder="ejemplo@correo.com" />
+      <label>Correo electrónico</label>
+      <input type="email" placeholder="ejemplo@correo.com" [formField]="userForm.email" />
     </div>
 
     <div class="form-field">
-      <label for="avatar">Avatar</label>
-      <input type="file" id="avatar" name="avatar" />
+      <label>Avatar</label>
+      <input type="file" (change)="onAvatarSelected($event)" />
     </div>
 
     <button type="submit" class="form-button">
