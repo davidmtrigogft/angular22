@@ -1,0 +1,76 @@
+.form-card {
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 8px 24px rgb(0 0 0 / 8%);
+  max-width: 700px;
+  padding: 2.5rem;
+}
+
+.form-card__header {
+  margin-bottom: 2rem;
+}
+
+.form-card__header h2 {
+  color: #1f2937;
+  margin: 0;
+}
+
+.form-card__header p {
+  margin-bottom: 0;
+  margin-top: 0.5rem;
+  color: #6b7280;
+}
+
+.user-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  max-width: 500px;
+}
+
+.form-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.form-field label {
+  color: #374151;
+  font-weight: 600;
+}
+
+.form-field input[type='text'],
+.form-field input[type='email'] {
+  background: #f9fafb;
+  border-radius: 8px;
+  border: 1px solid #d1d5db;
+  box-sizing: border-box;
+  font-size: 1rem;
+  padding: 0.75rem 1rem;
+  transition: border-color 0.2s ease;
+  width: 100%;
+}
+
+.form-field input[type='text']:focus,
+.form-field input[type='email']:focus {
+  border-color: #667eea;
+  box-shadow: 0 0 0 3px rgb(102 126 234 / 20%);
+  outline: none;
+}
+
+.form-button {
+  align-self: flex-start;
+  background: #667eea;
+  border-radius: 8px;
+  border: none;
+  color: white;
+  cursor: pointer;
+  font-weight: 600;
+  padding: 0.875rem 1.5rem;
+  transition: all 0.2s ease;
+}
+
+.form-button:hover {
+  background: #5368d5;
+  transform: translateY(-2px);
+}
