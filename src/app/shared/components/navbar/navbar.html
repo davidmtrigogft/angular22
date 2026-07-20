@@ -1,7 +1,15 @@
-<button (click)="goToCreateUser()" class="user-card__button user-card__button--primary">
-  Crear Usuario
-</button>
+<nav>
+  <ul class="navbar__list">
+    <li>
+      <a routerLink="/users" class="navbar__button navbar__button--primary">
+        👥  Ver usuarios
+      </a>
+    </li>
 
-<button (click)="goToUsers()" class="user-card__button user-card__button--primary">
-  Ver Usuarios
-</button>
+    <li>
+      <a routerLink="/create-user" class="navbar__button navbar__button--primary">
+        ➕  Crear usuario
+      </a>
+    </li>
+  </ul>
+</nav>

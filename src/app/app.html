@@ -1,4 +1,21 @@
-<app-navbar />
+<div class="layout">
+  <header class="header">
+    <h1>Gestión de usuarios</h1>
 
+    <span class="header__version">
+      Angular 22
+    </span>
+  </header>
 
-<router-outlet />
+  <aside class="sidebar">
+    <app-navbar />
+  </aside>
+
+  <main class="content">
+    <router-outlet />
+  </main>
+
+  <footer class="footer">
+    <p>&copy; 2024 Demo de Angular 22. Todos los derechos reservados.</p>
+  </footer>
+</div>

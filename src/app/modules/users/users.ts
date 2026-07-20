@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { UserCardComponent } from '../../shared/components/user-card/user-card';
+import { UserCardComponent } from '@components/user-card';
 
 @Component({
   selector: 'app-users',

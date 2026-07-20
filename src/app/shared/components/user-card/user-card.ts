@@ -1,11 +1,7 @@
 import { Component, input, output } from '@angular/core';
+import { User } from '../../interfaces';
 
-export interface User {
-  id: number;
-  name: string;
-  email: string;
-  avatar?: string;
-}
+
 
 @Component({
   selector: 'app-user-card',
