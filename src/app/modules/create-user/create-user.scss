@@ -74,3 +74,14 @@
   background: #5368d5;
   transform: translateY(-2px);
 }
+
+.form-button:disabled {
+  background: #cbd5e1;
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+.error-message {
+  color: #ef4444;
+  font-size: 0.875rem;
+}

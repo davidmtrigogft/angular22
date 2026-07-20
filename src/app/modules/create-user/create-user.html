@@ -8,11 +8,21 @@
     <div class="form-field">
       <label>Nombre</label>
       <input type="text" placeholder="Introduce el nombre" [formField]="userForm.name" />
+      @if (userForm.name().invalid() && userForm.name().touched()) {
+      <span class="error-message">
+        El nombre es obligatorio
+      </span>
+      }
     </div>
 
     <div class="form-field">
       <label>Correo electrónico</label>
       <input type="email" placeholder="ejemplo@correo.com" [formField]="userForm.email" />
+      @if (userForm.email().invalid() && userForm.email().touched()) {
+      <span class="error-message">
+        Introduce un email válido
+      </span>
+      }
     </div>
 
     <div class="form-field">
@@ -20,7 +30,7 @@
       <input type="file" (change)="onAvatarSelected($event)" />
     </div>
 
-    <button type="submit" class="form-button">
+    <button type="submit" class="form-button" [disabled]="userForm().invalid()">
       Crear usuario
     </button>
   </form>
