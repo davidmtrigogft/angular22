@@ -3,6 +3,7 @@ import { FormsModule } from '@angular/forms';
 import { email, form, required } from '@angular/forms/signals';
 import { Router } from '@angular/router';
 import { Input } from '@components/input';
+import { IInputConfig } from '@shared/components/input/interfaces/input.interface';
 import { IUser } from '@shared/interfaces';
 import { UsersService } from '@shared/services';
 
@@ -34,6 +35,26 @@ export class CreateUser {
       message: 'El email no es válido',
     });
   });
+
+  protected readonly nameInput: IInputConfig = {
+    label: 'Nombre',
+    placeholder: 'Introduce el nombre',
+    field: this.userForm.name,
+  };
+
+  protected readonly emailInput: IInputConfig = {
+    label: 'Correo electrónico',
+    placeholder: 'ejemplo@correo.com',
+    type: 'email',
+    field: this.userForm.email,
+  };
+
+  protected readonly avatarInput: IInputConfig = {
+    label: 'Avatar URL',
+    placeholder: 'https://example.com/avatar.jpg',
+    type: 'url',
+    field: this.userForm.avatar,
+  };
 
   protected onSubmit(): void {
     this.usersService.addUser(this.model());

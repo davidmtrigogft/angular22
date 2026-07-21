@@ -1,5 +1,6 @@
 import { Component, input } from '@angular/core';
-import { FieldTree, FormField, ValidationError } from '@angular/forms/signals';
+import { FormField, ValidationError } from '@angular/forms/signals';
+import { IInputConfig } from './interfaces/input.interface';
 
 @Component({
   selector: 'app-input',
@@ -8,13 +9,7 @@ import { FieldTree, FormField, ValidationError } from '@angular/forms/signals';
   styleUrl: './input.scss',
 })
 export class Input {
-  readonly label = input.required<string>();
-
-  readonly placeholder = input('');
-
-  readonly type = input('text');
-
-  readonly field = input.required<FieldTree<string | number | boolean | Date | null>>();
+  readonly config = input.required<IInputConfig>();
 
   protected getError(errors: readonly ValidationError[]): string | null {
     return errors[0]?.message ?? null;

@@ -1,18 +1,18 @@
 <div class="form-field">
   <label>
-    {{ label() }}
+    {{ config().label }}
   </label>
 
   <input
-    [type]="type()"
-    [placeholder]="placeholder()"
-    [formField]="field()"
-    [class.input-error]="field()().invalid() && field()().touched()"
+    [type]="config().type ?? 'text'"
+    [placeholder]="config().placeholder"
+    [formField]="config().field"
+    [class.input-error]="config().field().invalid() && config().field().touched()"
   />
 
-  @if (field()().invalid() && field()().touched()) {
+  @if (config().field().invalid() && config().field().touched()) {
     <span class="error-message">
-      {{ getError(field()().errors()) }}
+      {{ getError(config().field().errors()) }}
     </span>
   }
 </div>

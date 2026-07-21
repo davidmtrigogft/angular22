@@ -7,12 +7,11 @@
   <form class="user-form" (ngSubmit)="onSubmit()">
 
 
-    <app-input [label]="'Nombre'" [placeholder]="'Introduce el nombre'" [field]="userForm.name" />
+    <app-input [config]="nameInput" />
 
-    <app-input [label]="'Correo electrónico'" [type]="'email'" [placeholder]="'ejemplo@correo.com'"
-      [field]="userForm.email" />
+    <app-input [config]="emailInput" />
 
-    <app-input [label]="'Avatar URL'" [placeholder]="'https://example.com/avatar.jpg'" [field]="userForm.avatar" />
+    <app-input [config]="avatarInput" />
 
     @if (userForm()) {
     <button type="submit" class="form-button" [disabled]="userForm().invalid()">

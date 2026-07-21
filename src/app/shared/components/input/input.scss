@@ -9,8 +9,7 @@
   font-weight: 600;
 }
 
-.form-field input[type='text'],
-.form-field input[type='email'] {
+.form-field input {
   background: #f9fafb;
   border-radius: 8px;
   border: 1px solid #d1d5db;
@@ -21,8 +20,7 @@
   width: 100%;
 }
 
-.form-field input[type='text']:focus,
-.form-field input[type='email']:focus {
+.form-field input:focus {
   border-color: #667eea;
   box-shadow: 0 0 0 3px rgb(102 126 234 / 20%);
   outline: none;
