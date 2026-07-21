@@ -1,7 +1,8 @@
-import { Component, signal } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { email, form, FormField, required, ValidationError } from '@angular/forms/signals';
-import { User } from '../../shared';
+import { User, UsersService } from '../../shared';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-create-user',
@@ -10,6 +11,9 @@ import { User } from '../../shared';
   imports: [FormField, FormsModule],
 })
 export class CreateUser {
+  private readonly usersService = inject(UsersService);
+  private readonly router = inject(Router);
+
   private readonly model = signal<User>({
     id: 0,
     name: '',
@@ -30,7 +34,8 @@ export class CreateUser {
   });
 
   protected onSubmit(): void {
-    console.log(this.model());
+    this.usersService.addUser(this.model());
+    this.router.navigate(['/users']);
   }
 
   protected onAvatarSelected(event: Event): void {

@@ -6,6 +6,7 @@
 
   <form class="user-form" (ngSubmit)="onSubmit()">
 
+    <!-- TODO: hacer un componente input -->
     <div class="form-field">
       <label>Nombre</label>
       <input type="text" placeholder="Introduce el nombre" [formField]="userForm.name"
@@ -32,10 +33,12 @@
       <label>Avatar</label>
       <input type="file" (change)="onAvatarSelected($event)" />
     </div>
+
     @if (userForm()) {
     <button type="submit" class="form-button" [disabled]="userForm().invalid()">
       Crear usuario
     </button>
     }
+
   </form>
 </div>

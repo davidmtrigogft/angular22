@@ -10,6 +10,6 @@ import { User } from '../../interfaces';
 })
 export class UserCardComponent {
   user = input.required<User>();
-  viewClick = output<number>();
-  deleteClick = output<number>();
+  viewUser = output<number>();
+  deleteUser = output<number>();
 }

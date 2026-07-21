@@ -1,5 +1,5 @@
 <section class="wrapper">
   @for (user of users(); track user.id) {
-  <app-user-card [user]="user" (deleteClick)="onDeleteUser(user.id)" />
+  <app-user-card [user]="user" (viewUser)="onViewUser(user.id)" (deleteUser)="onDeleteUser(user.id)" />
   }
 </section>

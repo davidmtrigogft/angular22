@@ -16,4 +16,15 @@ export class Users {
   protected onDeleteUser(id: number): void {
     this._usersService.deleteUser(id);
   }
+
+  protected onViewUser(id: number): void {
+    const user = this._usersService.getUserById(id);
+
+    if (!user) {
+      console.error(`User with id ${id} not found`);
+      return;
+    }
+
+    console.log('User details:', user);
+  }
 }

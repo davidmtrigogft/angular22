@@ -17,13 +17,13 @@
 
         <div class="user-card__actions">
           <button
-            (click)="viewClick.emit(userData.id)"
+            (click)="viewUser.emit(userData.id)"
             class="user-card__button user-card__button--primary"
           >
             Ver Perfil
           </button>
           <button
-            (click)="deleteClick.emit(userData.id)"
+            (click)="deleteUser.emit(userData.id)"
             class="user-card__button user-card__button--danger"
           >
             Eliminar
