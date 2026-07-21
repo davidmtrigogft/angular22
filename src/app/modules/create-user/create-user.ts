@@ -1,6 +1,6 @@
 import { Component, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { email, form, FormField, required } from '@angular/forms/signals';
+import { email, form, FormField, required, ValidationError } from '@angular/forms/signals';
 import { User } from '../../shared';
 
 @Component({
@@ -18,14 +18,18 @@ export class CreateUser {
   });
 
   protected readonly userForm = form(this.model, (path) => {
-    required(path.name);
-    required(path.email);
-    email(path.email);
+    required(path.name, {
+      message: 'El nombre es obligatorio',
+    });
+    required(path.email, {
+      message: 'El email es obligatorio',
+    });
+    email(path.email, {
+      message: 'El email no es válido',
+    });
   });
 
   protected onSubmit(): void {
-    console.log('click en el submit');
-    console.log(this.userForm().value());
     console.log(this.model());
   }
 
@@ -38,5 +42,9 @@ export class CreateUser {
     }
 
     this.userForm.avatar?.().value.set(file.name);
+  }
+
+  protected getError(errors: ValidationError[]): string | null {
+    return errors[0]?.message ?? null;
   }
 }

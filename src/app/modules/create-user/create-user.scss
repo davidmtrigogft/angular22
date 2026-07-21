@@ -81,7 +81,16 @@
   opacity: 0.7;
 }
 
+.input-error {
+  border-color: #ef4444 !important;
+}
+
+.input-error:focus {
+  box-shadow: 0 0 0 3px rgb(239 68 68 / 20%);
+}
+
 .error-message {
   color: #ef4444;
   font-size: 0.875rem;
+  font-weight: 500;
 }

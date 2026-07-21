@@ -5,22 +5,25 @@
   </div>
 
   <form class="user-form" (ngSubmit)="onSubmit()">
+
     <div class="form-field">
       <label>Nombre</label>
-      <input type="text" placeholder="Introduce el nombre" [formField]="userForm.name" />
+      <input type="text" placeholder="Introduce el nombre" [formField]="userForm.name"
+        [class.input-error]="userForm.name().invalid() && userForm.name().touched()" />
       @if (userForm.name().invalid() && userForm.name().touched()) {
       <span class="error-message">
-        El nombre es obligatorio
+        {{ getError(userForm.name().errors()) }}
       </span>
       }
     </div>
 
     <div class="form-field">
       <label>Correo electrónico</label>
-      <input type="email" placeholder="ejemplo@correo.com" [formField]="userForm.email" />
-      @if (userForm.email().invalid() && userForm.email().touched()) {
+      <input type="email" placeholder="ejemplo@correo.com" [formField]="userForm.email"
+        [class.input-error]="userForm.email().invalid() && userForm.email().touched()" />
+      @if(userForm.email().invalid() && userForm.email().touched()) {
       <span class="error-message">
-        Introduce un email válido
+        {{ getError(userForm.email().errors()) }}
       </span>
       }
     </div>
