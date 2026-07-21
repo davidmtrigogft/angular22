@@ -4,3 +4,5 @@ export interface User {
   email: string;
   avatar?: string;
 }
+
+export type CreateUser = Omit<User, 'id'>;
