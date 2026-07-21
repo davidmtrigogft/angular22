@@ -1,11 +1,11 @@
 import { effect, Service, signal } from '@angular/core';
 import { users } from '../constants';
-import { CreateUser, User } from '../interfaces';
+import { ICreateUser, IUser } from '../interfaces';
 
 @Service()
 export class UsersService {
   private static readonly STORAGE_KEY = 'users';
-  private readonly _users = signal<User[]>(this.loadUsers());
+  private readonly _users = signal<IUser[]>(this.loadUsers());
 
   private readonly _storageEffect = effect(() => {
     localStorage.setItem(UsersService.STORAGE_KEY, JSON.stringify(this._users()));
@@ -13,7 +13,7 @@ export class UsersService {
 
   public readonly users = this._users.asReadonly();
 
-  public addUser(user: CreateUser): void {
+  public addUser(user: ICreateUser): void {
     this._users.update((users) => [
       ...users,
       {
@@ -27,7 +27,7 @@ export class UsersService {
     this._users.update((users) => users.filter((user) => user.id !== id));
   }
 
-  public getUserById(id: number): User | undefined {
+  public getUserById(id: number): IUser | undefined {
     return this.users().find((user) => user.id === id);
   }
 
@@ -37,7 +37,7 @@ export class UsersService {
     return users.length ? Math.max(...users.map((user) => user.id)) + 1 : 1;
   }
 
-  private loadUsers(): User[] {
+  private loadUsers(): IUser[] {
     const storedUsers = localStorage.getItem(UsersService.STORAGE_KEY);
 
     if (!storedUsers) {
@@ -45,7 +45,7 @@ export class UsersService {
     }
 
     try {
-      return JSON.parse(storedUsers) as User[];
+      return JSON.parse(storedUsers) as IUser[];
     } catch {
       return users;
     }

@@ -1,0 +1,18 @@
+<div class="form-field">
+  <label>
+    {{ label() }}
+  </label>
+
+  <input
+    [type]="type()"
+    [placeholder]="placeholder()"
+    [formField]="field()"
+    [class.input-error]="field()().invalid() && field()().touched()"
+  />
+
+  @if (field()().invalid() && field()().touched()) {
+    <span class="error-message">
+      {{ getError(field()().errors()) }}
+    </span>
+  }
+</div>

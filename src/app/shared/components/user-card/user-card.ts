@@ -1,5 +1,5 @@
 import { Component, input, output } from '@angular/core';
-import { User } from '../../interfaces';
+import { IUser } from '../../interfaces';
 
 
 
@@ -9,7 +9,7 @@ import { User } from '../../interfaces';
   styleUrls: ['./user-card.scss'],
 })
 export class UserCardComponent {
-  user = input.required<User>();
+  user = input.required<IUser>();
   viewUser = output<number>();
   deleteUser = output<number>();
 }

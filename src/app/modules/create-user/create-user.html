@@ -6,33 +6,13 @@
 
   <form class="user-form" (ngSubmit)="onSubmit()">
 
-    <!-- TODO: hacer un componente input -->
-    <div class="form-field">
-      <label>Nombre</label>
-      <input type="text" placeholder="Introduce el nombre" [formField]="userForm.name"
-        [class.input-error]="userForm.name().invalid() && userForm.name().touched()" />
-      @if (userForm.name().invalid() && userForm.name().touched()) {
-      <span class="error-message">
-        {{ getError(userForm.name().errors()) }}
-      </span>
-      }
-    </div>
 
-    <div class="form-field">
-      <label>Correo electrónico</label>
-      <input type="email" placeholder="ejemplo@correo.com" [formField]="userForm.email"
-        [class.input-error]="userForm.email().invalid() && userForm.email().touched()" />
-      @if(userForm.email().invalid() && userForm.email().touched()) {
-      <span class="error-message">
-        {{ getError(userForm.email().errors()) }}
-      </span>
-      }
-    </div>
+    <app-input [label]="'Nombre'" [placeholder]="'Introduce el nombre'" [field]="userForm.name" />
 
-    <div class="form-field">
-      <label>Avatar</label>
-      <input type="file" (change)="onAvatarSelected($event)" />
-    </div>
+    <app-input [label]="'Correo electrónico'" [type]="'email'" [placeholder]="'ejemplo@correo.com'"
+      [field]="userForm.email" />
+
+    <app-input [label]="'Avatar URL'" [placeholder]="'https://example.com/avatar.jpg'" [field]="userForm.avatar" />
 
     @if (userForm()) {
     <button type="submit" class="form-button" [disabled]="userForm().invalid()">

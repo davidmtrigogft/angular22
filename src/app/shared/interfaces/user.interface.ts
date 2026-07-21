@@ -1,8 +1,8 @@
-export interface User {
+export interface IUser {
   id: number;
   name: string;
   email: string;
-  avatar?: string;
+  avatar: string;
 }
 
-export type CreateUser = Omit<User, 'id'>;
+export type ICreateUser = Omit<IUser, 'id'>;
