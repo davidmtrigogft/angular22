@@ -7,6 +7,7 @@ import { IInputConfig } from '@shared/components/input/interfaces/input.interfac
 import { IUser } from '@shared/interfaces';
 import { UsersService } from '@shared/services';
 import { IUserEditorLiterals } from './interfaces/user-editor.interface';
+import { literals } from './constants/user-editor-literals.constant';
 
 @Component({
   selector: 'app-user-editor',
@@ -19,36 +20,23 @@ export class UserEditor {
   private readonly _route = inject(ActivatedRoute);
   private readonly _router = inject(Router);
 
-  private readonly _userId = Number(this._route.snapshot.paramMap.get('id'));
-  private readonly _user = this._userId ? this._usersService.getUserById(this._userId) : null;
+  private readonly _userId = Number(this._route.snapshot.paramMap.get('id') ?? 0);
+  private readonly _user = this._userId > 0 ? this._usersService.getUserById(this._userId) : null;
 
-  private readonly setFormValues = effect(() => {
-    if (this._user) {
-      this._model.set({
-        id: this._user.id,
-        name: this._user.name,
-        email: this._user.email,
-        avatar: this._user.avatar,
-      });
-    }
-  });
+  protected readonly isEditMode = this._userId > 0;
 
-  protected readonly isEditMode = computed(() => !this._userId);
+  protected readonly literals: IUserEditorLiterals = this.isEditMode
+    ? literals.edit(this._user!)
+    : literals.create;
 
-  protected readonly literals = computed<IUserEditorLiterals>(() => ({
-    button: this._userId ? 'Actualizar usuario' : 'Crear usuario',
-    formSubTitle: this._userId
-      ? `Edita el usuario ${this._user?.name}`
-      : 'Añade un nuevo usuario al sistema',
-    formTitle: this._userId ? 'Editar usuario' : 'Crear usuario',
-  }));
-
-  private readonly _model = signal<IUser>({
-    id: 0,
-    name: '',
-    email: '',
-    avatar: '',
-  });
+  private readonly _model = signal<IUser>(
+    this._user ?? {
+      id: 0,
+      name: '',
+      email: '',
+      avatar: '',
+    },
+  );
 
   protected readonly userForm = form(this._model, (path) => {
     required(path.name, {
@@ -77,7 +65,7 @@ export class UserEditor {
 
   protected readonly avatarInput: IInputConfig = {
     label: 'Avatar URL',
-    placeholder: 'https://example.com/avatar.jpg',
+    placeholder: 'https://randomuser.me/api/portraits/men/1.jpg',
     type: 'url',
     field: this.userForm.avatar,
   };
@@ -85,11 +73,9 @@ export class UserEditor {
   protected onSubmit(): void {
     if (this._userId) {
       this._usersService.updateUser(this._model());
-      return;
+    } else {
+      this._usersService.addUser(this._model());
     }
-
-    this._usersService.addUser(this._model());
-
     this._router.navigate(['/users']);
   }
 
