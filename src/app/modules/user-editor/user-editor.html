@@ -1,11 +1,10 @@
 <div class="user-editor-container">
   <div class="user-editor-container__header">
-    <h2>Crear usuario</h2>
-    <p>Añade un nuevo usuario al sistema</p>
+    <h2>{{ literals().formTitle }}</h2>
+    <p>{{ literals().formSubTitle }}</p>
   </div>
 
   <form class="user-form" (ngSubmit)="onSubmit()">
-
 
     <app-input [config]="nameInput" />
 
@@ -16,13 +15,15 @@
     <div class="user-editor-container__buttons">
       @if (userForm()) {
       <button type="submit" class="form-button" [disabled]="userForm().invalid()">
-        Crear usuario
+        {{ literals().button }}
       </button>
       }
 
-      <button class="form-button form-button__secondary" (click)="createDefaultUser()">
-        Crear usuario por defecto
-      </button>
+      @if (isEditMode()) {
+        <button class="form-button form-button__secondary" (click)="createDefaultUser()">
+          Crear usuario por defecto
+        </button>
+      }
     </div>
 
   </form>

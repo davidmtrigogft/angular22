@@ -31,6 +31,12 @@ export class UsersService {
     return this.users().find((user) => user.id === id);
   }
 
+  public updateUser(updatedUser: IUser): void {
+    this._users.update((users) =>
+      users.map((user) => (user.id === updatedUser.id ? updatedUser : user)),
+    );
+  }
+
   private generateId(): number {
     const users = this.users();
 

@@ -1,7 +1,7 @@
 import { Component, inject } from '@angular/core';
-import { UserCardComponent } from '@components/user-card';
-import { UsersService } from '../../shared';
 import { Router } from '@angular/router';
+import { UserCardComponent } from '@components/user-card';
+import { IUser, UsersService } from '../../shared';
 
 @Component({
   selector: 'app-users',
@@ -20,15 +20,6 @@ export class Users {
   }
 
   protected onViewUser(id: number): void {
-    const user = this._usersService.getUserById(id);
-
-    if (!user) {
-      console.error(`User with id ${id} not found`);
-      return;
-    }
-
-    console.log('User details:', user);
-
-    this._router.navigate(['/edit-user', id], { state: { user } });
+    this._router.navigate(['/edit-user', id]);
   }
 }
