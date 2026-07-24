@@ -1,4 +1,4 @@
-import { Component, computed, effect, inject, signal } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { email, form, required } from '@angular/forms/signals';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -6,8 +6,8 @@ import { Input } from '@components/input';
 import { IInputConfig } from '@shared/components/input/interfaces/input.interface';
 import { IUser } from '@shared/interfaces';
 import { UsersService } from '@shared/services';
-import { IUserEditorLiterals } from './interfaces/user-editor.interface';
 import { literals } from './constants/user-editor-literals.constant';
+import { IUserEditorLiterals } from './interfaces/user-editor.interface';
 
 @Component({
   selector: 'app-user-editor',
@@ -91,5 +91,7 @@ export class UserEditor {
     };
 
     this._model.set(defaultUser);
+
+    this.onSubmit();
   }
 }
