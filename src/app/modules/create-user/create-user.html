@@ -1,5 +1,5 @@
-<div class="form-card">
-  <div class="form-card__header">
+<div class="create-user-container">
+  <div class="create-user-container__header">
     <h2>Crear usuario</h2>
     <p>Añade un nuevo usuario al sistema</p>
   </div>
@@ -13,11 +13,17 @@
 
     <app-input [config]="avatarInput" />
 
-    @if (userForm()) {
-    <button type="submit" class="form-button" [disabled]="userForm().invalid()">
-      Crear usuario
-    </button>
-    }
+    <div class="create-user-container__buttons">
+      @if (userForm()) {
+      <button type="submit" class="form-button" [disabled]="userForm().invalid()">
+        Crear usuario
+      </button>
+      }
+
+      <button class="form-button form-button__secondary" (click)="createDefaultUser()">
+        Crear usuario por defecto
+      </button>
+    </div>
 
   </form>
 </div>

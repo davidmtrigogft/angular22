@@ -60,4 +60,18 @@ export class CreateUser {
     this.usersService.addUser(this.model());
     this.router.navigate(['/users']);
   }
+
+  protected createDefaultUser(): void {
+    const id = Math.floor(Math.random() * 99) + 1;
+    const gender = Math.random() > 0.5 ? 'men' : 'women';
+
+    const defaultUser: IUser = {
+      id: 0,
+      name: 'Usuario por defecto',
+      email: 'usuario@defecto.com',
+      avatar: `https://randomuser.me/api/portraits/${gender}/${id}.jpg`,
+    };
+
+    this.model.set(defaultUser);
+  }
 }

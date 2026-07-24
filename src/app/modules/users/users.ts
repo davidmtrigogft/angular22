@@ -26,5 +26,8 @@ export class Users {
     }
 
     console.log('User details:', user);
+
+    //TODO: reaprovechar el componente
+    // formulario para editar el usuario, con los datos del usuario seleccionado
   }
 }
