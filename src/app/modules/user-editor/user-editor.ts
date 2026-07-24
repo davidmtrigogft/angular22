@@ -8,12 +8,12 @@ import { IUser } from '@shared/interfaces';
 import { UsersService } from '@shared/services';
 
 @Component({
-  selector: 'app-create-user',
-  templateUrl: './create-user.html',
-  styleUrl: './create-user.scss',
+  selector: 'app-user-editor',
+  templateUrl: './user-editor.html',
+  styleUrl: './user-editor.scss',
   imports: [Input, FormsModule],
 })
-export class CreateUser {
+export class UserEditor {
   private readonly usersService = inject(UsersService);
   private readonly router = inject(Router);
 

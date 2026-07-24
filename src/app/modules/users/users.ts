@@ -1,6 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { UserCardComponent } from '@components/user-card';
 import { UsersService } from '../../shared';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-users',
@@ -10,6 +11,7 @@ import { UsersService } from '../../shared';
 })
 export class Users {
   private readonly _usersService = inject(UsersService);
+  private readonly _router = inject(Router);
 
   protected readonly users = this._usersService.users;
 
@@ -27,7 +29,6 @@ export class Users {
 
     console.log('User details:', user);
 
-    //TODO: reaprovechar el componente
-    // formulario para editar el usuario, con los datos del usuario seleccionado
+    this._router.navigate(['/edit-user', id], { state: { user } });
   }
 }

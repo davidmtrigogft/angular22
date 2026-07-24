@@ -1,12 +1,10 @@
-.create-user-container {
+.user-editor-container {
   background: white;
   border-radius: 16px;
   box-shadow: 0 8px 24px rgb(0 0 0 / 8%);
   max-width: 500px;
   padding: 2.5rem;
-}
 
-.create-user-container {
   &__header {
     margin-bottom: 2rem;
 

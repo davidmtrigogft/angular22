@@ -1,5 +1,5 @@
-<div class="create-user-container">
-  <div class="create-user-container__header">
+<div class="user-editor-container">
+  <div class="user-editor-container__header">
     <h2>Crear usuario</h2>
     <p>Añade un nuevo usuario al sistema</p>
   </div>
@@ -13,7 +13,7 @@
 
     <app-input [config]="avatarInput" />
 
-    <div class="create-user-container__buttons">
+    <div class="user-editor-container__buttons">
       @if (userForm()) {
       <button type="submit" class="form-button" [disabled]="userForm().invalid()">
         Crear usuario
