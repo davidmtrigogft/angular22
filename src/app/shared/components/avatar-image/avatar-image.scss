@@ -24,8 +24,21 @@
     color: #6b7280;
     display: flex;
     font-size: 0.875rem;
-    height: 120px;
     justify-content: center;
-    width: 120px;
+
+    &--sm {
+      height: 80px;
+      width: 80px;
+    }
+
+    &--md {
+      height: 120px;
+      width: 120px;
+    }
+
+    &--lg {
+      height: 180px;
+      width: 180px;
+    }
   }
 }

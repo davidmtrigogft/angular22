@@ -9,6 +9,7 @@ import { IUser } from '@shared/interfaces';
 import { UsersService } from '@shared/services';
 import { literals } from './constants/user-editor-literals.constant';
 import { IUserEditorLiterals } from './interfaces/user-editor.interface';
+import { generateRandomUser } from './helpers/generate-random-user.helper';
 
 @Component({
   selector: 'app-user-editor',
@@ -87,18 +88,7 @@ export class UserEditor {
   }
 
   protected createDefaultUser(): void {
-    const id = Math.floor(Math.random() * 99) + 1;
-    const gender = Math.random() > 0.5 ? 'men' : 'women';
-
-    const defaultUser: IUser = {
-      id: 0,
-      name: 'Usuario por defecto',
-      email: 'usuario@defecto.com',
-      avatar: `https://randomuser.me/api/portraits/${gender}/${id}.jpg`,
-    };
-
-    this.model.set(defaultUser);
-
+    this.model.set(generateRandomUser());
     this.onSubmit();
   }
 

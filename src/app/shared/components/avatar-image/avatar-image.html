@@ -1,14 +1,11 @@
 @if (avatarImageConfig().avatarUrl) {
-  <img
-    class="avatar-image"
-    [class.avatar-image--sm]="avatarImageConfig().size === 'sm'"
-    [class.avatar-image--md]="avatarImageConfig().size === 'md'"
-    [class.avatar-image--lg]="avatarImageConfig().size === 'lg'"
-    [src]="avatarImageConfig().avatarUrl"
-    alt="Avatar" />} @else {
-<div class="avatar-image__placeholder">
+<img class="avatar-image" [class.avatar-image--sm]="avatarImageConfig().size === 'sm'"
+  [class.avatar-image--md]="avatarImageConfig().size === 'md'"
+  [class.avatar-image--lg]="avatarImageConfig().size === 'lg'" [src]="avatarImageConfig().avatarUrl" alt="Avatar" />
+} @else {
+<div class="avatar-image__placeholder" [class.avatar-image__placeholder--sm]="avatarImageConfig().size === 'sm'"
+  [class.avatar-image__placeholder--md]="avatarImageConfig().size === 'md'"
+  [class.avatar-image__placeholder--lg]="avatarImageConfig().size === 'lg'">
   Sin avatar
 </div>
 }
-
-

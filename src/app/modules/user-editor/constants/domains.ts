@@ -1,0 +1,18 @@
+export const domains = [
+  'aol.com',
+  'gmail.com',
+  'gmail.com',
+  'gmail.com',
+  'gmail.com',
+  'gmx.com',
+  'hotmail.com',
+  'hotmail.com',
+  'icloud.com',
+  'live.com',
+  'outlook.com',
+  'outlook.com',
+  'outlook.com',
+  'proton.me',
+  'yahoo.com',
+  'zoho.com',
+];
