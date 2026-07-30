@@ -35,28 +35,8 @@
     gap: 1rem;
   }
 
-  &__image {
-    border: 3px solid #e2e8f0;
-    border-radius: 50%;
-    height: 120px;
-    object-fit: cover;
-    width: 120px;
-  }
-
   &__label {
     color: #374151;
     font-weight: 600;
-  }
-
-  &__placeholder {
-    align-items: center;
-    background: #f3f4f6;
-    border-radius: 50%;
-    color: #6b7280;
-    display: flex;
-    font-size: 0.875rem;
-    height: 120px;
-    justify-content: center;
-    width: 120px;
   }
 }
