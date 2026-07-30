@@ -1,4 +1,5 @@
-import { Component, effect, input, output, signal } from '@angular/core';
+import { Component, computed, effect, input, output, signal } from '@angular/core';
+import { AvatarImage, IAvatarImage } from '../avatar-image';
 import { Modal } from '../modal';
 import { IModal } from '../modal/interfaces/modal.interface';
 
@@ -6,7 +7,7 @@ import { IModal } from '../modal/interfaces/modal.interface';
   selector: 'app-avatar-picker-modal',
   templateUrl: './avatar-picker-modal.html',
   styleUrl: './avatar-picker-modal.scss',
-  imports: [Modal],
+  imports: [AvatarImage, Modal],
 })
 export class AvatarPickerModal {
   private readonly setAvatarEffect = effect(() => {
@@ -32,6 +33,11 @@ export class AvatarPickerModal {
     title: 'Seleccionar avatar',
     isOpen: true,
   });
+
+  protected readonly avatarImageConfig = computed<IAvatarImage>(() => ({
+    avatarUrl: `https://randomuser.me/api/portraits/${this.gender()}/${this.avatarId()}.jpg`,
+    size: 'lg'
+  }));
 
   protected onConfirm(): void {
     const url = `https://randomuser.me/api/portraits/${this.gender()}/${this.avatarId()}.jpg`;

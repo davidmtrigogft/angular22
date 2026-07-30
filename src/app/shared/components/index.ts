@@ -1,3 +1,4 @@
+export * from './avatar-image';
 export * from './avatar-picker-modal';
 export * from './avatar-selector';
 export * from './input';

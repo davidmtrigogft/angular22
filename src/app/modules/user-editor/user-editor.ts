@@ -1,9 +1,9 @@
-import { Component, inject, signal } from '@angular/core';
+import { Component, computed, inject, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { email, form, required } from '@angular/forms/signals';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Input } from '@components/input';
-import { AvatarPickerModal, AvatarSelector } from '@shared/components';
+import { AvatarPickerModal, AvatarSelector, IAvatarImage } from '@shared/components';
 import { IInputConfig } from '@shared/components/input/interfaces/input.interface';
 import { IUser } from '@shared/interfaces';
 import { UsersService } from '@shared/services';
@@ -32,6 +32,10 @@ export class UserEditor {
       avatar: '',
     },
   );
+
+  protected avatarImageConfig = computed<IAvatarImage>(() => ({
+    avatarUrl: this.model().avatar,
+  }));
 
   protected readonly isEditMode = this._userId > 0;
 
@@ -113,5 +117,12 @@ export class UserEditor {
     }));
 
     this.isAvatarModalOpen.set(false);
+  }
+
+  protected onDeleteAvatar(): void {
+    this.model.update((user) => ({
+      ...user,
+      avatar: '',
+    }));
   }
 }

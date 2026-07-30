@@ -3,21 +3,14 @@
     Avatar
   </label>
   <div class="avatar-selector__content">
-    @if (avatarUrl()) {
-      <img
-        class="avatar-selector__image"
-        [src]="avatarUrl()"
-        alt="Avatar seleccionado" />
-    } @else {
-      <div class="avatar-selector__placeholder">
-        Sin avatar
-      </div>
-    }
-    <button
-      type="button"
-      class="avatar-selector__button"
-      (click)="changeAvatar.emit()">
+    <app-avatar-image [avatarImageConfig]="avatarImageConfig()" />
+    <button type="button" class="avatar-selector__button" (click)="changeAvatar.emit()">
       ✏️ Cambiar avatar
     </button>
+    @if (avatarImageConfig().avatarUrl) {
+    <button type="button" class="avatar-selector__button avatar-selector__button--danger" (click)="deleteAvatar.emit()">
+      🗑️ Eliminar avatar
+    </button>
+    }
   </div>
 </div>

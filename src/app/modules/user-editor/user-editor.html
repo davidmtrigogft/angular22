@@ -7,7 +7,8 @@
   <form class="user-editor__form" (ngSubmit)="onSubmit()">
     <app-input [config]="nameInput" />
     <app-input [config]="emailInput" />
-    <app-avatar-selector [avatarUrl]="model().avatar" (changeAvatar)="openAvatarModal()" />
+    <app-avatar-selector [avatarImageConfig]="avatarImageConfig()" (changeAvatar)="openAvatarModal()"
+      (deleteAvatar)="onDeleteAvatar()" />
 
     <div class="user-editor__footer">
       @if (userForm()) {
