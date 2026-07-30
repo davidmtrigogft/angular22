@@ -1,0 +1,23 @@
+<div class="avatar-selector">
+  <label class="avatar-selector__label">
+    Avatar
+  </label>
+  <div class="avatar-selector__content">
+    @if (avatarUrl()) {
+      <img
+        class="avatar-selector__image"
+        [src]="avatarUrl()"
+        alt="Avatar seleccionado" />
+    } @else {
+      <div class="avatar-selector__placeholder">
+        Sin avatar
+      </div>
+    }
+    <button
+      type="button"
+      class="avatar-selector__button"
+      (click)="changeAvatar.emit()">
+      ✏️ Cambiar avatar
+    </button>
+  </div>
+</div>

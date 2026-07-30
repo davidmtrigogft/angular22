@@ -3,7 +3,7 @@ import { FormsModule } from '@angular/forms';
 import { email, form, required } from '@angular/forms/signals';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Input } from '@components/input';
-import { AvatarPickerModal } from '@shared/components';
+import { AvatarPickerModal, AvatarSelector } from '@shared/components';
 import { IInputConfig } from '@shared/components/input/interfaces/input.interface';
 import { IUser } from '@shared/interfaces';
 import { UsersService } from '@shared/services';
@@ -14,7 +14,7 @@ import { IUserEditorLiterals } from './interfaces/user-editor.interface';
   selector: 'app-user-editor',
   templateUrl: './user-editor.html',
   styleUrl: './user-editor.scss',
-  imports: [AvatarPickerModal, Input, FormsModule],
+  imports: [AvatarPickerModal, AvatarSelector, Input, FormsModule],
 })
 export class UserEditor {
   private readonly _usersService = inject(UsersService);

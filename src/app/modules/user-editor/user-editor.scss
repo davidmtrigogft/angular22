@@ -5,59 +5,6 @@
   max-width: 500px;
   padding: 2.5rem;
 
-  &__avatar {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-  }
-
-  &__avatar-button {
-    background: #667eea;
-    border: none;
-    border-radius: 8px;
-    color: white;
-    cursor: pointer;
-    font-weight: 600;
-    padding: 0.75rem 1rem;
-    transition: all 0.2s ease;
-  }
-
-  &__avatar-button:hover {
-    background: #5368d5;
-    transform: translateY(-2px);
-  }
-
-  &__avatar-content {
-    align-items: center;
-    display: flex;
-    gap: 1rem;
-  }
-
-  &__avatar-image {
-    border: 3px solid #e2e8f0;
-    border-radius: 50%;
-    height: 120px;
-    object-fit: cover;
-    width: 120px;
-  }
-
-  &__avatar-label {
-    color: #374151;
-    font-weight: 600;
-  }
-
-  &__avatar-placeholder {
-    align-items: center;
-    background: #f3f4f6;
-    border-radius: 50%;
-    color: #6b7280;
-    display: flex;
-    font-size: 0.875rem;
-    height: 120px;
-    justify-content: center;
-    width: 120px;
-  }
-
   &__footer {
     display: flex;
     gap: 1rem;
