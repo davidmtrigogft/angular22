@@ -44,14 +44,12 @@ export class UsersService {
   }
 
   private loadUsers(): IUser[] {
-    const storedUsers = localStorage.getItem(UsersService.STORAGE_KEY);
-
-    if (!storedUsers) {
-      return users;
-    }
-
     try {
-      return JSON.parse(storedUsers) as IUser[];
+      const storedUsers: IUser[] = JSON.parse(
+        localStorage.getItem(UsersService.STORAGE_KEY) ?? '[]',
+      );
+
+      return storedUsers.length ? storedUsers : users;
     } catch {
       return users;
     }
