@@ -3,6 +3,7 @@ import { AvatarImage, IAvatarImage } from '../avatar-image';
 import { Modal } from '../modal';
 import { IModal } from '../modal/interfaces/modal.interface';
 import { IGender } from '@shared/interfaces';
+import { numberOfUsersInRandomUser } from '@shared/constants';
 
 @Component({
   selector: 'app-avatar-picker-modal',
@@ -46,7 +47,7 @@ export class AvatarPickerModal {
   }
 
   protected updateId(value: number): void {
-    const normalizedValue = Math.min(99, Math.max(1, value));
+    const normalizedValue = Math.min(numberOfUsersInRandomUser, Math.max(1, value));
     this.avatarId.set(normalizedValue);
   }
 }
