@@ -1,11 +1,11 @@
-import { IUser } from '@shared/interfaces';
+import { IGender, IUser } from '@shared/interfaces';
+import { domains } from '../constants/domains';
 import { firstNames } from '../constants/first-names-constant';
 import { lastNames } from '../constants/last-names-constant';
-import { domains } from '../constants/domains';
 
 export const generateRandomUser = (): IUser => {
   const id = Math.floor(Math.random() * 99) + 1;
-  const gender = Math.random() > 0.5 ? 'men' : 'women';
+  const gender: IGender = Math.random() > 0.5 ? 'men' : 'women';
   const firstName = firstNames[gender][Math.floor(Math.random() * firstNames[gender].length)];
   const lastName = lastNames[Math.floor(Math.random() * lastNames.length)];
   const name = `${firstName} ${lastName}`;

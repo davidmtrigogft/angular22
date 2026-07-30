@@ -1,4 +1,6 @@
-export const firstNames: Record<'men' | 'women', string[]> = {
+import { IGender } from '@shared/interfaces';
+
+export const firstNames: Record<IGender, string[]> = {
   men: [
     'James',
     'John',

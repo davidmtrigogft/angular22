@@ -2,6 +2,7 @@ import { Component, computed, effect, input, output, signal } from '@angular/cor
 import { AvatarImage, IAvatarImage } from '../avatar-image';
 import { Modal } from '../modal';
 import { IModal } from '../modal/interfaces/modal.interface';
+import { IGender } from '@shared/interfaces';
 
 @Component({
   selector: 'app-avatar-picker-modal',
@@ -18,7 +19,7 @@ export class AvatarPickerModal {
       return;
     }
 
-    this.gender.set(match[1] as 'men' | 'women');
+    this.gender.set(match[1] as IGender);
     this.avatarId.set(Number(match[2]));
   });
 
@@ -26,7 +27,7 @@ export class AvatarPickerModal {
   readonly close = output<void>();
   readonly avatarSelected = output<string>();
 
-  protected readonly gender = signal<'men' | 'women'>('men');
+  protected readonly gender = signal<IGender>('men');
   protected readonly avatarId = signal(1);
 
   protected avatarModalConfig = signal<IModal>({
