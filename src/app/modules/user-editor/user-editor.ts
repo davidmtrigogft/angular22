@@ -3,6 +3,7 @@ import { FormsModule } from '@angular/forms';
 import { email, form, required } from '@angular/forms/signals';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Input } from '@components/input';
+import { AvatarPickerModal } from '@shared/components';
 import { IInputConfig } from '@shared/components/input/interfaces/input.interface';
 import { IUser } from '@shared/interfaces';
 import { UsersService } from '@shared/services';
@@ -13,7 +14,7 @@ import { IUserEditorLiterals } from './interfaces/user-editor.interface';
   selector: 'app-user-editor',
   templateUrl: './user-editor.html',
   styleUrl: './user-editor.scss',
-  imports: [Input, FormsModule],
+  imports: [AvatarPickerModal, Input, FormsModule],
 })
 export class UserEditor {
   private readonly _usersService = inject(UsersService);
@@ -70,6 +71,8 @@ export class UserEditor {
     field: this.userForm.avatar,
   };
 
+  protected readonly isAvatarModalOpen = signal(false);
+
   protected onSubmit(): void {
     if (this._userId) {
       this._usersService.updateUser(this._model());
@@ -96,9 +99,19 @@ export class UserEditor {
   }
 
   protected openAvatarModal(): void {
-    const avatarUrl = prompt('Introduce la URL del avatar:');
-    if (avatarUrl) {
-      this._model.update((user) => ({ ...user, avatar: avatarUrl }));
-    }
+    this.isAvatarModalOpen.set(true);
+  }
+
+  protected closeAvatarModal(): void {
+    this.isAvatarModalOpen.set(false);
+  }
+
+  protected onAvatarSelected(avatarUrl: string): void {
+    this._model.update((user) => ({
+      ...user,
+      avatar: avatarUrl,
+    }));
+
+    this.isAvatarModalOpen.set(false);
   }
 }

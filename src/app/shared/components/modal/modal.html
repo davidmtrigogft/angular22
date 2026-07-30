@@ -1,0 +1,19 @@
+@if (modalConfig().isOpen) {
+<div class="modal__backdrop" (click)="close.emit()">
+  <div class="modal" (click)="$event.stopPropagation()">
+
+    <div class="modal__header">
+      <h2>{{ modalConfig().title }}</h2>
+
+      <button type="button" (click)="close.emit()">
+        ✕
+      </button>
+    </div>
+
+    <div class="modal__content">
+      <ng-content />
+    </div>
+
+  </div>
+</div>
+}

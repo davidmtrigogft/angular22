@@ -11,7 +11,7 @@
     <app-input [config]="emailInput" />
 
     <div class="user-editor__form--avatar">
-      <app-input [config]="avatarInput" class="user-editor__form--avatar--input"/>
+      <app-input [config]="avatarInput" class="user-editor__form--avatar--input" />
       <button type="button" class="user-editor__form--avatar--button" (click)="openAvatarModal()">
         ➕
       </button>
@@ -25,7 +25,8 @@
       }
 
       @if (!isEditMode) {
-      <button type="button" class="user-editor__footer--button user-editor__footer--button__secondary" (click)="createDefaultUser()">
+      <button type="button" class="user-editor__footer--button user-editor__footer--button__secondary"
+        (click)="createDefaultUser()">
         {{ literals.createDefaultUserButton }}
       </button>
       }
@@ -33,3 +34,8 @@
 
   </form>
 </div>
+
+@if (isAvatarModalOpen()) {
+<app-avatar-picker-modal [avatarUrl]="userForm.avatar().value()" (close)="closeAvatarModal()"
+  (avatarSelected)="onAvatarSelected($event)" />
+}

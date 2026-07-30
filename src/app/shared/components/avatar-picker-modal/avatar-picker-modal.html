@@ -1,0 +1,71 @@
+<app-modal
+  [modalConfig]="avatarModalConfig()"
+  (close)="close.emit()">
+
+  <div class="avatar-picker">
+    <div class="avatar-picker__preview">
+      <img
+        class="avatar-picker__image"
+        [src]="'https://randomuser.me/api/portraits/' + gender() + '/' + avatarId() + '.jpg'"
+        alt="Avatar preview" />
+    </div>
+
+    <div class="avatar-picker__group">
+      <label class="avatar-picker__label">
+        Género
+      </label>
+      <div class="avatar-picker__gender">
+        <button
+          type="button"
+          class="avatar-picker__gender-button"
+          [class.avatar-picker__gender-button--active]="gender() === 'men'"
+          (click)="gender.set('men')">
+          👨 Hombre
+        </button>
+
+        <button
+          type="button"
+          class="avatar-picker__gender-button"
+          [class.avatar-picker__gender-button--active]="gender() === 'women'"
+          (click)="gender.set('women')">
+          👩 Mujer
+        </button>
+      </div>
+    </div>
+
+    <div class="avatar-picker__group">
+      <label
+        for="avatarId"
+        class="avatar-picker__label">
+        Avatar ID
+      </label>
+      <input
+        id="avatarId"
+        class="avatar-picker__input"
+        type="number"
+        min="1"
+        max="99"
+        [value]="avatarId()"
+        (input)="updateId(+$any($event.target).value)" />
+    </div>
+
+    <div class="avatar-picker__group">
+      <label class="avatar-picker__label">
+        URL generada
+      </label>
+
+      <div class="avatar-picker__url">
+        https://randomuser.me/api/portraits/{{ gender() }}/{{ avatarId() }}.jpg
+      </div>
+    </div>
+
+    <div class="avatar-picker__actions">
+      <button
+        type="button"
+        class="avatar-picker__button"
+        (click)="onConfirm()">
+        Seleccionar avatar
+      </button>
+    </div>
+  </div>
+</app-modal>
