@@ -1,14 +1,13 @@
 .layout {
   display: grid;
-  grid-template-columns: 220px 1fr;
-  grid-template-rows: 70px 1fr 60px;
-
   grid-template-areas:
     'header header'
     'sidebar content'
     'footer footer';
-
-  min-height: 100vh;
+  grid-template-columns: 220px 1fr;
+  grid-template-rows: 70px 1fr 60px;
+  height: 100vh;
+  overflow: hidden;
 }
 
 .header {
