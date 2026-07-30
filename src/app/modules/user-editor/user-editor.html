@@ -5,27 +5,37 @@
   </div>
 
   <form class="user-editor__form" (ngSubmit)="onSubmit()">
-
     <app-input [config]="nameInput" />
-
     <app-input [config]="emailInput" />
+    <div class="user-editor__avatar">
+      <label class="user-editor__avatar-label">
+        Avatar
+      </label>
+      <div class="user-editor__avatar-content">
+        @if (model().avatar) {
+        <img class="user-editor__avatar-image" [src]="model().avatar" alt="Avatar seleccionado" />
+        } @else {
+        <div class="user-editor__avatar-placeholder">
+          Sin avatar
+        </div>
+        }
+        <button type="button" class="user-editor__avatar-button" (click)="openAvatarModal()">
+          ✏️ Cambiar avatar
+        </button>
 
-    <div class="user-editor__form--avatar">
-      <app-input [config]="avatarInput" class="user-editor__form--avatar--input" />
-      <button type="button" class="user-editor__form--avatar--button" (click)="openAvatarModal()">
-        ➕
-      </button>
+      </div>
+
     </div>
 
     <div class="user-editor__footer">
       @if (userForm()) {
-      <button type="submit" class="user-editor__footer--button" [disabled]="userForm().invalid()">
+      <button type="submit" class="user-editor__footer-button" [disabled]="userForm().invalid()">
         {{ literals.createUserButton }}
       </button>
       }
 
       @if (!isEditMode) {
-      <button type="button" class="user-editor__footer--button user-editor__footer--button__secondary"
+      <button type="button" class="user-editor__footer-button user-editor__footer-button--secondary"
         (click)="createDefaultUser()">
         {{ literals.createDefaultUserButton }}
       </button>

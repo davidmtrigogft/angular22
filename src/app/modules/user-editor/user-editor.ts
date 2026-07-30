@@ -24,7 +24,7 @@ export class UserEditor {
   private readonly _userId = Number(this._route.snapshot.paramMap.get('id') ?? 0);
   private readonly _user = this._userId > 0 ? this._usersService.getUserById(this._userId) : null;
 
-  private readonly _model = signal<IUser>(
+  protected readonly model = signal<IUser>(
     this._user ?? {
       id: 0,
       name: '',
@@ -39,7 +39,7 @@ export class UserEditor {
     ? literals.edit(this._user!)
     : literals.create;
 
-  protected readonly userForm = form(this._model, (path) => {
+  protected readonly userForm = form(this.model, (path) => {
     required(path.name, {
       message: 'El nombre es obligatorio',
     });
@@ -75,9 +75,9 @@ export class UserEditor {
 
   protected onSubmit(): void {
     if (this._userId) {
-      this._usersService.updateUser(this._model());
+      this._usersService.updateUser(this.model());
     } else {
-      this._usersService.addUser(this._model());
+      this._usersService.addUser(this.model());
     }
     this._router.navigate(['/users']);
   }
@@ -93,7 +93,7 @@ export class UserEditor {
       avatar: `https://randomuser.me/api/portraits/${gender}/${id}.jpg`,
     };
 
-    this._model.set(defaultUser);
+    this.model.set(defaultUser);
 
     this.onSubmit();
   }
@@ -107,7 +107,7 @@ export class UserEditor {
   }
 
   protected onAvatarSelected(avatarUrl: string): void {
-    this._model.update((user) => ({
+    this.model.update((user) => ({
       ...user,
       avatar: avatarUrl,
     }));
