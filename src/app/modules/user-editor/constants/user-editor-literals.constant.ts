@@ -6,13 +6,14 @@ import {
 
 export const literals: IUserEditorLiteralsRecord = {
   create: {
-    button: 'Crear usuario',
+    createDefaultUserButton: 'Crear usuario por defecto',
+    createUserButton: 'Crear usuario',
     formSubTitle: 'Añade un nuevo usuario al sistema',
     formTitle: 'Crear usuario',
   },
 
   edit: (user: IUser): IUserEditorLiterals => ({
-    button: 'Actualizar usuario',
+    createUserButton: 'Actualizar usuario',
     formSubTitle: `Edita el usuario ${user.name}`,
     formTitle: 'Editar usuario',
   }),

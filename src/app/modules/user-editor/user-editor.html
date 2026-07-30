@@ -1,28 +1,33 @@
-<div class="user-editor-container">
-  <div class="user-editor-container__header">
+<div class="user-editor">
+  <div class="user-editor__header">
     <h2>{{ literals.formTitle }}</h2>
     <p>{{ literals.formSubTitle }}</p>
   </div>
 
-  <form class="user-form" (ngSubmit)="onSubmit()">
+  <form class="user-editor__form" (ngSubmit)="onSubmit()">
 
     <app-input [config]="nameInput" />
 
     <app-input [config]="emailInput" />
 
-    <app-input [config]="avatarInput" />
+    <div class="user-editor__form--avatar">
+      <app-input [config]="avatarInput" class="user-editor__form--avatar--input"/>
+      <button type="button" class="user-editor__form--avatar--button" (click)="openAvatarModal()">
+        ➕
+      </button>
+    </div>
 
-    <div class="user-editor-container__buttons">
+    <div class="user-editor__footer">
       @if (userForm()) {
-      <button type="submit" class="form-button" [disabled]="userForm().invalid()">
-        {{ literals.button }}
+      <button type="submit" class="user-editor__footer--button" [disabled]="userForm().invalid()">
+        {{ literals.createUserButton }}
       </button>
       }
 
       @if (!isEditMode) {
-        <button type="button" class="form-button form-button__secondary" (click)="createDefaultUser()">
-          Crear usuario por defecto
-        </button>
+      <button type="button" class="user-editor__footer--button user-editor__footer--button__secondary" (click)="createDefaultUser()">
+        {{ literals.createDefaultUserButton }}
+      </button>
       }
     </div>
 

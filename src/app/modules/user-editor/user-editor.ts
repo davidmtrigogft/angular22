@@ -23,12 +23,6 @@ export class UserEditor {
   private readonly _userId = Number(this._route.snapshot.paramMap.get('id') ?? 0);
   private readonly _user = this._userId > 0 ? this._usersService.getUserById(this._userId) : null;
 
-  protected readonly isEditMode = this._userId > 0;
-
-  protected readonly literals: IUserEditorLiterals = this.isEditMode
-    ? literals.edit(this._user!)
-    : literals.create;
-
   private readonly _model = signal<IUser>(
     this._user ?? {
       id: 0,
@@ -37,6 +31,12 @@ export class UserEditor {
       avatar: '',
     },
   );
+
+  protected readonly isEditMode = this._userId > 0;
+
+  protected readonly literals: IUserEditorLiterals = this.isEditMode
+    ? literals.edit(this._user!)
+    : literals.create;
 
   protected readonly userForm = form(this._model, (path) => {
     required(path.name, {
@@ -93,5 +93,12 @@ export class UserEditor {
     this._model.set(defaultUser);
 
     this.onSubmit();
+  }
+
+  protected openAvatarModal(): void {
+    const avatarUrl = prompt('Introduce la URL del avatar:');
+    if (avatarUrl) {
+      this._model.update((user) => ({ ...user, avatar: avatarUrl }));
+    }
   }
 }

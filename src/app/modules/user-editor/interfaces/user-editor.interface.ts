@@ -1,7 +1,8 @@
 import { IUser } from '@shared/interfaces/user.interface';
 
 export interface IUserEditorLiterals {
-  button: string;
+  createDefaultUserButton?: string;
+  createUserButton: string;
   formSubTitle: string;
   formTitle: string;
 }
